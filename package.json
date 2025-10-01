@@ -4,7 +4,8 @@
   "description": "A simple pomodoro app",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Hello :3\" && exit 1"
+    "test": "echo \"Hello :3\" && exit 1" ,
+    "start": "electron ."
   },
   "author": "Enzo",
   "license": "MIT",

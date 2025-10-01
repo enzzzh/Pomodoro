@@ -30,3 +30,8 @@ button {
 button:hover {
   background-color: #696969;
 }
+
+.dark-mode {
+  background: #222;
+  color: #eee;
+}

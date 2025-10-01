@@ -5,6 +5,7 @@ let seconds = 0;
 
 const timeDisplay = document.getElementById('time');
 const startStopButton = document.getElementById('start-stop');
+const ThemeSwitcher = document.getElementById('switch-modes');
 
 function updateTimeDisplay() {
   timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
@@ -42,6 +43,11 @@ function resetTimer() {
   startStopButton.textContent = "Start";
   isRunning = false;
 }
+
+ThemeSwitcher.addEventListener('click', function() {
+  document.body.classList.toggle('dark-mode');
+  ThemeSwitcher.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+});
 
 startStopButton.addEventListener('click', startStopTimer);
 updateTimeDisplay();
