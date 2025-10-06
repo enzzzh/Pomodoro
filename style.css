@@ -25,13 +25,43 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
+  transition: 150ms ease;
 }
 
 button:hover {
   background-color: #696969;
+  scale: 1.35;
 }
 
 .dark-mode {
   background: #222;
   color: #eee;
+  transition: 150ms ease-in;
 }
+
+.dark-mode::before{
+  background-color: #f4f4f4;
+}
+
+.dark-mode::after{
+  opacity: 0.5;
+  background: #222;
+  color: #eee;
+}
+
+.light-mode {
+  background: #eee;
+  color: #222;
+  transition: 150ms ease-in;
+}
+
+.light-mode::before{
+  background-color: #222;
+}
+
+.light-mode::after{
+  opacity: 0.5;
+  background: #eee;
+  color: #222;
+}
+

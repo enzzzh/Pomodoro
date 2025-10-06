@@ -45,8 +45,15 @@ function resetTimer() {
 }
 
 ThemeSwitcher.addEventListener('click', function() {
-  document.body.classList.toggle('dark-mode');
-  ThemeSwitcher.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+  if (document.body.classList.contains('dark-mode')) {
+    document.body.classList.remove('dark-mode');
+    document.body.classList.add('light-mode');
+    ThemeSwitcher.textContent = ' ⏾ ';
+  } else {
+    document.body.classList.remove('light-mode');
+    document.body.classList.add('dark-mode');
+    ThemeSwitcher.textContent = ' ☆ ';
+  }
 });
 
 startStopButton.addEventListener('click', startStopTimer);
