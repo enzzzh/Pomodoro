@@ -7,10 +7,12 @@ The app is still in its early releases so it will have more changes
 ## How to install : 
 
 To install the package on your machine\
-``git clone https://github.com/enzzzh/Pomodoro.git``\
-``cd Pomodoro``\
-``npm install``\
-``electron .``
+```bash
+git clone https://github.com/enzzzh/Pomodoro.git
+cd Pomodoro
+npm install
+npm start
+```
 
 --- 
 ## Special thank you :
