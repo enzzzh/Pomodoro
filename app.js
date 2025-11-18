@@ -6,7 +6,11 @@ let seconds = 0;
 const timeDisplay = document.getElementById('time');
 const startStopButton = document.getElementById('start-stop');
 const ThemeSwitcher = document.getElementById('switch-modes');
+const EasterEgg = document.getElementById('clickme');
 
+EasterEgg.addEventListener( ('click'), function(){
+  alert ("This is an easter egg :) ");
+});
 function updateTimeDisplay() {
   timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }

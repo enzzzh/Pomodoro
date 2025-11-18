@@ -34,9 +34,12 @@ button:hover {
 }
 
 .dark-mode {
+  display : flex;
+  position: inherit;
+  position: bottom;
   background: #222;
   color: #eee;
-  transition: 1000ms ease-in;
+  transition: 300ms ease-in;
 }
 
 .dark-mode::before{
@@ -52,7 +55,7 @@ button:hover {
 .light-mode {
   background: #eee;
   color: #222;
-  transition: 1000ms ease-in;
+  transition: 300ms ease-in;
 }
 
 .light-mode::before{
