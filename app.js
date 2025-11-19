@@ -11,6 +11,8 @@ const EasterEgg = document.getElementById('clickme');
 EasterEgg.addEventListener( ('click'), function(){
   alert ("This is an easter egg :) ");
 });
+
+
 function updateTimeDisplay() {
   timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
@@ -62,3 +64,53 @@ ThemeSwitcher.addEventListener('click', function() {
 
 startStopButton.addEventListener('click', startStopTimer);
 updateTimeDisplay();
+
+async function fetchPokemon() {
+  const input = document.getElementById('pokemonName');
+  const name = input ? input.value.trim().toLowerCase() : '';
+  const img = document.getElementById('pokemonImage');
+  const button = document.getElementById('fetchPokemon');
+  if (!button) return;
+  const originalText = button.textContent;
+
+  if (!name) {
+    alert('Please enter a Pokémon name');
+    return;
+  }
+
+  try {
+    button.disabled = true;
+    button.textContent = 'Loading...';
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(name)}`);
+    if (!res.ok) throw new Error('Pokémon not found');
+    const data = await res.json();
+    const sprite = data.sprites && (data.sprites.front_default || data.sprites.other?.['official-artwork']?.front_default);
+    if (sprite) {
+      img.src = sprite;
+      img.alt = data.name;
+      img.style.display = 'block';
+      img.setAttribute('aria-hidden', 'false');
+    } else {
+      img.style.display = 'none';
+      alert('No image available for this Pokémon');
+    }
+  } catch (err) {
+    img.style.display = 'none';
+    console.error(err);
+    alert('Pokémon not found or network error');
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
+  }
+}
+
+const fetchBtn = document.getElementById('fetchPokemon');
+if (fetchBtn) fetchBtn.addEventListener('click', fetchPokemon);
+
+// allow Enter key to trigger fetch when focused on input
+const pokemonInput = document.getElementById('pokemonName');
+if (pokemonInput) {
+  pokemonInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') fetchPokemon();
+  });
+}
